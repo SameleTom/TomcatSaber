@@ -57,12 +57,9 @@ class tomcat_saber(threading.Thread):
                                 self.user,self.password = self.account[0],self.account[1]
                                 self.auth = base64.b64encode('%s:%s' % (self.user, self.password)).replace('\n', '')
                                 print self.ip+self.user+self.password
-                                try:                                        
-                                    #使用soap协议
+                                try:                  
                                     self.h = httplib.HTTP(self.ip,self.port)
-                                    
                                     self.h.putrequest('GET', self.path)
-
                                     self.h.putheader('Host', self.ip+':'+self.port)
                                     self.h.putheader('User-agent', "Mozilla/5.0 (Windows NT 5.1; rv:26.0) Gecko/20100101 Firefox/26.0")
                                     self.h.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8')
